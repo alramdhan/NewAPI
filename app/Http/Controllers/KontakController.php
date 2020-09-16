@@ -35,7 +35,24 @@ class KontakController extends Controller
      */
     public function create()
     {
-        //
+        $nama = $request->input('nama');
+        $email = $request->input('email');
+        $alamat = $request->input('alamat');
+        $nohp = $request->input('nohp');
+
+        $data = new Kontak();
+
+        $data->nama = $nama;
+        $data->email = $email;
+        $data->alamat = $alamat;
+        $data->nohp = $nohp;
+
+        if($data->save()) {
+            $res['message'] = "success";
+            $res['values'] = "$data";
+
+            return response($res);
+        }
     }
 
     /**
