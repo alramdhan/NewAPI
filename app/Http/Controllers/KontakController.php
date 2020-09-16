@@ -35,6 +35,17 @@ class KontakController extends Controller
      */
     public function create()
     {
+        
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         $nama = $request->input('nama');
         $email = $request->input('email');
         $alamat = $request->input('alamat');
@@ -53,17 +64,6 @@ class KontakController extends Controller
 
             return response($res);
         }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
