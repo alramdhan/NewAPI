@@ -22,3 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/kontak', [KontakController::class, 'index']);
 Route::get('/kontak/{id}', [KontakController::class, 'show']);
 Route::post('/kontak/store', [KontakController::class, 'store']);
+Route::post('/kontak/update/{id}', [KontakController::class, 'update']);
+Route::post('/kontak/delete/{id}', [KontakController::class, 'destroy']);

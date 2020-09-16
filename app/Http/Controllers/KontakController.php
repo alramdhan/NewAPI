@@ -63,6 +63,10 @@ class KontakController extends Controller
             $res['values'] = "$data";
 
             return response($res);
+        } else {
+            $res['message'] = "error";
+
+            return response($res);
         }
     }
 
@@ -108,7 +112,28 @@ class KontakController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nama = $request->input('nama');
+        $email = $request->input('email');
+        $alamat = $request->input('alamat');
+        $nohp = $request->input('nohp');
+
+        $data = Kontak::where('id', $id)->first();
+
+        $data->nama = $nama;
+        $data->email = $email;
+        $data->alamat = $alamat;
+        $data->nohp = $nohp;
+
+        if($data->save()) {
+            $res['message'] = "success";
+            $res['values'] = "$data";
+
+            return response($res);
+        } else {
+            $res['message'] = "error";
+
+            return response($res);
+        }
     }
 
     /**
@@ -119,6 +144,17 @@ class KontakController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Kontak::where('id', $id)->first();
+
+        if($data->delete()) {
+            $res['message'] = "success";
+            $res['values'] = "$data";
+
+            return response($res);
+        } else {
+            $res['message'] = "error";
+
+            return response($res);
+        }
     }
 }
